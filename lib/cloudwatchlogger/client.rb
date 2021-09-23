@@ -56,7 +56,7 @@ module CloudWatchLogger
       def massage_message(incoming_message, severity, processid)
         outgoing_message = ''
 
-        outgoing_message << "pid=#{processid}, thread=#{Thread.current.object_id}, ctx=#{Context.current}, severity=#{severity}, "
+        outgoing_message << "pid=#{processid}, thread=#{Thread.current.object_id}, ctx=#{Sidekiq::Context.current}, severity=#{severity}, "
 
         outgoing_message << case incoming_message
                             when Hash
